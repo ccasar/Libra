@@ -136,6 +136,7 @@ check_inputs = function(input,
   } else {
     # check if input is sparse matrix or numberic matrix/df
     valid_input = is(input, 'sparseMatrix') ||
+      is(input,"RenameDims") ||
       is_numeric_matrix(input) ||
       is_numeric_dataframe(input)
     if (!valid_input)
