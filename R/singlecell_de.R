@@ -95,6 +95,10 @@ singlecell_de = function(
     
     # check if integer or already normalized, normalize if needed
     mat = GetAssayData(sc, slot = 'counts')
+    if(class(mat) == "RenameDims"){
+        mat <- as(mat, "dgCMatrix")
+    }
+    
     if ((sum(mat %% 1 == 0) == length(mat)) == T) {
         if (normalization == 'log_tp10k'){
             sc %<>% NormalizeData()
