@@ -94,7 +94,7 @@ singlecell_de = function(
     Idents(sc) = sc$cell_type
     
     # check if integer or already normalized, normalize if needed
-    mat = GetAssayData(sc, slot = 'counts')
+    mat = GetAssayData(sc, layer = 'counts')
     if(class(mat) == "RenameDims"){
         mat <- as(mat, "dgCMatrix")
     }
@@ -133,7 +133,7 @@ singlecell_de = function(
     }
     
     if (binarization) {
-        mat = GetAssayData(sc, slot='counts')
+        mat = GetAssayData(sc, layer='counts')
         mat@x[mat@x > 0] = 1
         sc[['RNA']]@data = mat
     }
