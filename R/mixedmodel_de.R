@@ -216,7 +216,7 @@ mixedmodel_de = function(
         meta = meta0 %>% set_rownames(.$cell_barcode)) %>%
         NormalizeData()
       Idents(sc0) = sc0$label
-      mat = GetAssayData(sc0, slot = 'data')
+      mat = GetAssayData(sc0, layer = 'data')
       levels = levels(meta0$label)
       if (is.null(levels)) {
         levels = unique(meta0$label)
