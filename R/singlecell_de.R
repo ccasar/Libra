@@ -126,16 +126,16 @@ singlecell_de = function(
             vals[is.na(x = vals)] = 0
             slot(object = norm_mat, name = "x") = vals
             
-            sc[['RNA']]@data = norm_mat
+             LayerData(sc,layer = "data") <- norm_mat
         }
     } else {
-        sc[['RNA']]@data = mat
+         LayerData(sc,layer = "data") <- mat
     }
     
     if (binarization) {
         mat = GetAssayData(sc, layer='counts')
         mat@x[mat@x > 0] = 1
-        sc[['RNA']]@data = mat
+         LayerData(sc,layer = "data") <- mat
     }
     
     # run single cell DE using Seurat
